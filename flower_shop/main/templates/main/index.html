@@ -1,0 +1,46 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+    <title>Магазин цветов</title>
+{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: url('https://fotoblik.ru/wp-content/uploads/2023/09/krasivye-rozy-na-chernom-fone-7.webp') no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+    }
+
+    .welcome-section {
+        text-align: center;
+        padding: 100px 20px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        max-width: 800px;
+        margin: 100px auto;
+    }
+
+    .welcome-section h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    .welcome-section p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+    }
+</style>
+
+<div class="welcome-section">
+    <h1>Добро пожаловать в наш магазин!</h1>
+    <p>Мы создаем лучшие букеты из роз, чтобы ваши особенные моменты стали еще ярче.
+       У нас только свежие цветы, индивидуальный подход к каждому клиенту и быстрая доставка.
+       Наши дизайнеры создают композиции, которые вдохновляют и радуют глаз.
+       Доверьте нам украшение ваших праздников — мы сделаем это с любовью!</p>
+</div>
+
+{% endblock %}

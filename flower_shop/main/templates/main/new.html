@@ -1,0 +1,68 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+    <title>New</title>
+{% endblock %}
+
+
+{% block content %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: url('https://fotoblik.ru/wp-content/uploads/2023/09/krasivye-rozy-na-chernom-fone-7.webp') no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+    }
+
+    .welcome-section {
+        text-align: left;
+        padding: 100px 20px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        max-width: 800px;
+        margin: 100px auto;
+    }
+
+    .welcome-section h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    .welcome-section p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+    }
+        .icon {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background-color: #f9b233;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 30px;
+        margin-right: 10px;
+    }
+    .icon::before {
+        content: "\2713";
+        color: white;
+        font-size: 18px;
+    }
+</style>
+
+<div class="welcome-section">
+<h2>Почему выбирают нас:</h2>
+    <ul>
+        <li><span class="icon"></span> Лучшие розы:Мы сотрудничаем с проверенными поставщиками, обеспечивая вам самые свежие и красивые цветы.</li>
+        <li><span class="icon"></span> Профессиональные флористы: Наши мастера создают уникальные букеты, учитывая каждую деталь и ваше настроение.</li>
+        <li><span class="icon"></span> Индивидуальный подход: Для нас важен каждый клиент. Мы создаем букеты под любые случаи жизни.</li>
+        <li><span class="icon"></span> Быстрая доставка: Наша круглосуточная служба гарантирует своевременность доставки вашего подарка.</li>
+        <li><span class="icon"></span> Удобство и безопасность: Простота оформления заказов и надежная оплата делают покупку комфортной.</li>
+        <li><span class="icon"></span> Акции и скидки: Регулярно радуем наших клиентов специальными предложениями.</li>
+    </ul>
+
+    <p>Присоединяйтесь к миру красоты вместе с нами!</p>
+</div>
+
+{% endblock %}

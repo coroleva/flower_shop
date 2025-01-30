@@ -1,0 +1,36 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+    <title>Мои заказы</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4 text-center">Мои заказы</h1>
+    
+    {% if orders %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Продукт</th>
+                <th>Количество</th>
+                <th>Итоговая стоимость</th>
+                <th>Дата заказа</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.product.name }}</td>
+                <td>{{ order.quantity }}</td>
+                <td>{{ order.total_price }} руб.</td>
+                <td>{{ order.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="text-center">У вас нет заказов.</p>
+    {% endif %}
+</div>
+{% endblock %}

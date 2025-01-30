@@ -1,0 +1,41 @@
+{% extends 'main/layout.html' %}
+<!-- layout.html находится в папке main -->
+{% block title %}
+    <title>Catalog</title>
+{% endblock %}
+{% block content %}
+
+
+  <h1 class="text-center my-4">Каталог</h1>
+
+  <div class="container">
+    {% if product %}
+      <div class="row">
+        {% for product in product %}
+          <div class="col-md-4 mb-4 d-flex align-items-stretch">
+            <div class="card">
+              <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+              <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">{{ product.description }}</p>
+                <p class="text-success fw-bold">Цена: {{product.price}} руб.</p>
+                <p class="text-muted">Количество: {{product.count}}</p>
+
+                <!--<a href="#" class="btn btn-primary">Заказать</a>-->
+                <a href="{% url 'catalog:order' product.id %}" class="btn btn-primary">Заказать</a>
+
+              </div>
+            </div>
+          </div>
+          {% if forloop.counter|divisibleby:3 and not forloop.last %}
+            </div><div class="row">
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-center">Каталог пуст</p>
+    {% endif %}
+  </div>
+
+
+{% endblock %}

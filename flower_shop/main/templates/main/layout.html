@@ -1,0 +1,86 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин цветов</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <style>
+        <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+        body {
+            min-height: 100vh;
+        }
+        aside {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            background-color: #f8f9fa;
+            border-right: 1px solid #dee2e6;
+        }
+        main {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        aside img {
+            max-width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="d-flex flex-column align-items-center py-4">
+        <img src="{% static 'main/img/f9.jpeg' %}" alt="logotype" class="mb-3">
+        <h5 class="text-secondary text-center">Магазин цветов</h5>
+        <nav class="nav flex-column w-100 mt-3">
+            <a class="nav-link text-dark px-4" href="{% url 'index' %}">
+                <i class="bi bi-house-door"></i> Главная
+            </a>
+            <a class="nav-link text-dark px-4" href="{% url 'new' %}">
+                <i class="bi bi-info-circle"></i> О нас
+            </a>
+                <a class="nav-link text-dark px-4" href="{% url 'catalog:catalog' %}">
+                <i class="bi bi-info-circle"></i> Каталог
+            </a>
+
+
+            <hr class="w-100 my-4">
+
+            <!-- Блок состояния пользователя -->
+            {% if user.is_authenticated %}
+                <p class="text-center mb-2">Привет, {{ user.username }}!</p>
+                <a class="nav-link text-dark px-4 btn btn-danger mt-2" href="{% url 'logout' %}">
+                    <i class="bi bi-box-arrow-right"></i> Выйти
+                </a>
+            {% else %}
+                <a class="nav-link text-dark px-4 btn btn-success mb-2" href="{% url 'register' %}">
+                    <i class="bi bi-person-plus"></i> Регистрация
+                </a>
+                <a class="nav-link text-dark px-4 btn btn-primary mt-2" href="{% url 'login' %}">
+                    <i class="bi bi-box-arrow-in-right"></i> Войти
+                </a>
+
+            {% endif %}
+            <a class="nav-link text-dark px-4 btn btn-info mt-2"
+                   href="https://t.me/flower_shop_coroleva_bot?start=registration" target="_blank">
+                    <i class="bi bi-telegram"></i> Регистрация через Telegram
+            </a>
+
+
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

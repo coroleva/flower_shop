@@ -1,0 +1,50 @@
+{% extends 'main/layout.html' %}
+{% block title %}
+    <title>Оформление заказа</title>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="my-4 text-center">Оформление заказа</h1>
+    <div class="card mx-auto" style="max-width: 500px;">
+        <!-- Отображение изображения продукта -->
+        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+        <div class="card-body">
+            <!-- Название продукта -->
+            <h5 class="card-title">{{ product.name }}</h5>
+            <!-- Цена продукта -->
+            <p class="card-text text-success fw-bold">Цена за 1 букет: {{product.price}} руб.</p>
+
+            <!-- Форма заказа -->
+            <form method="post" action="{% url 'catalog:order' product.id %}">
+                {% csrf_token %}
+                <!-- Поле ввода количества -->
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Количество букетов:</label>
+                    <input type="number" id="quantity" name="quantity" class="form-control" min="1" max="{{ product.count }}" value="1" required>
+                </div>
+                <!-- Отображение итоговой стоимости -->
+                <div class="mb-3">
+                    <label class="form-label">Итоговая стоимость:</label>
+                    <p id="total-price" class="fw-bold">{{ product.price }} руб.</p>
+
+                </div>
+                <!-- Кнопка подтверждения -->
+                <button type="submit" class="btn btn-primary w-100">Подтвердить</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    const quantityInput = document.getElementById('quantity');
+    const totalPrice = document.getElementById('total-price');
+    const pricePerItem = parseFloat("{{ product.price|floatformat:2 }}");  // Убедитесь, что это число
+
+    quantityInput.addEventListener('input', () => {
+        const quantity = parseInt(quantityInput.value) || 1;  // Убедитесь, что количество - число
+        const total = (pricePerItem * quantity).toFixed(2);
+        totalPrice.textContent = `${total} руб.`;  // Обновляем итоговую стоимость
+    });
+</script>
+
+{% endblock %}
