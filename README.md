@@ -68,7 +68,7 @@ python manage.py runserver
 1. Укажите **TOKEN** в файле `config.py`
 2. Запустите бота:
 ```sh
-python bot.py
+python bot_7.py
 ```
 
 ---
