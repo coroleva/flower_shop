@@ -30,7 +30,7 @@
 
 ### 1️⃣ **Клонирование репозитория**
 ```sh
-git clone https://github.com/ВАШ_РЕПОЗИТОРИЙ.git
+git clone [https://github.com/ВАШ_РЕПОЗИТОРИЙ.git](https://github.com/coroleva/flower_shop.git)
 cd ВАШ_РЕПОЗИТОРИЙ
 ```
 
